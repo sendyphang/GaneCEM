@@ -1,5 +1,5 @@
 
-clc; clear; clf
+clc; clear; clf 
 reset(gpuDevice(1));
 addpath('./src')
 
@@ -13,7 +13,7 @@ load matLibrary.mat;
 length_x = 1.07e-2;
 length_y = 0.43e-2;
 
-d_l = 0.005e-2;
+d_l = 0.01e-2;
 
 polarisation = 'Hz';%'Ez';  % Hz means the Ex, Ey, Hz != 0 and Hx, Hy, Vz = 0  while Ez polarization is the opposite   
 
