@@ -11,9 +11,14 @@ classdef InOut
         function plotMaterial(grid,what_to_plot)
             
             if strcmp(what_to_plot , 'n')
-                pcolor(((0:grid.NX-1)+1)*grid.dl,((0:grid.NY-1)+1)*grid.dl,sqrt(grid.matSus0+1));
+                [x,y] = meshgrid(((0:grid.NX-1)+0.5)*grid.dl,((0:grid.NY-1)+0.5)*grid.dl);
+                x = reshape(x,[numel(x),1]);
+                y = reshape(y,[numel(y),1]);
+%                 pcolor(((0:grid.NX-1))*grid.dl,((0:grid.NY-1))*grid.dl,sqrt(grid.matSus0+1));
+                imagesc(x,y,sqrt(grid.matSus0+1));
                 xlabel('x / m'); ylabel('y / m'); zlabel('Refractive index');
                 axis('image'); view(0,90)
+                set(gca,'Ydir','normal')
             else
                 %....
             end
@@ -67,6 +72,28 @@ classdef InOut
             
             
             value = what_to_observe(Y0:Ye,X0:Xe);  
+        end
+        
+        %% plot nodes for debug or demonstration
+        function plotTLMnodes(grid,sz)
+            [x,y] = meshgrid(((0:grid.NX-1)+0.5)*grid.dl,((0:grid.NY-1)+0.5)*grid.dl);
+            x = reshape(x,[numel(x),1]);
+            y = reshape(y,[numel(y),1]);
+            scatter(x,y,sz,'+');
+            axis([0 grid.NY*grid.dl 0 grid.NX*grid.dl])
+            xlabel('x / m'); ylabel('y / m'); 
+            axis('image');
+                        
+        end
+        
+        %% write a grid value to plot figure for debug
+        function writeText(grid,x,y,what_to_plot)
+            text(x,y,string(what_to_plot));
+            axis([0 grid.NY*grid.dl 0 grid.NX*grid.dl])
+            drawnow;
+            xlabel('x / m'); ylabel('y / m'); 
+            axis('image'); view(0,90);
+            set(gca,'Ydir','normal')
         end
         
         %% if you want to add more function write down here

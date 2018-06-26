@@ -11,7 +11,8 @@ classdef source
             %% check computational dimension 
             NX = grid.NX; NY = grid.NY; polarisation = grid.pol_type;
 
-            X0 = round((x0-grid.dl/2.)/grid.dl); Y0 = round((y0-grid.dl/2.)/grid.dl);
+%             X0 = round((x0-grid.dl/2.)/grid.dl); Y0 = round((y0-grid.dl/2.)/grid.dl);
+            X0 = ceil((x0)/grid.dl); Y0 = ceil((y0)/grid.dl);
             
             if X0>NX || X0<0 || Y0>NY || Y0<0
                 error('SOURCE::outside computational windwow');
@@ -53,8 +54,8 @@ classdef source
             
             %% check computational dimension 
             NX = grid.NX; NY = grid.NY; polarisation = grid.pol_type;
-
-            X0 = round((x0-grid.dl/2.)/grid.dl); Y0 = round((y0-grid.dl/2.)/grid.dl);
+            X0 = ceil((x0)/grid.dl); Y0 = ceil((y0)/grid.dl);
+%             X0 = round((x0-grid.dl/2.)/grid.dl); Y0 = round((y0-grid.dl/2.)/grid.dl);
             
             if X0>NX || X0<0 || Y0>NY || Y0<0
                 error('SOURCE::outside computational windwow');
@@ -108,7 +109,7 @@ classdef source
             %% check computational dimension 
             NX = grid.NX; NY = grid.NY; polarisation = grid.pol_type;
 
-            X0 = round((x0-grid.dl/2.)/grid.dl); Y0 = round((y0-grid.dl/2.)/grid.dl);
+            X0 = ceil((x0-grid.dl/2.)/grid.dl); Y0 = round((y0-grid.dl/2.)/grid.dl);
             
             if X0>NX || X0<0 || Y0>NY || Y0<0
                 error('SOURCE::outside computational windwow');
